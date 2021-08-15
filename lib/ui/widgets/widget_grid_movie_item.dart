@@ -14,7 +14,7 @@ class WidgetGridMovieItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width / 2,
-      margin: EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 10),
+      margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -47,7 +47,7 @@ class WidgetGridMovieItem extends StatelessWidget {
               width: 92,
               fit: BoxFit.cover,
             ),
-            SizedBox(height: marginXsmall),
+            SizedBox(height: 5),
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,12 +62,12 @@ class WidgetGridMovieItem extends StatelessWidget {
                         color: Colors.black,
                         fontSize: 16),
                   ),
-                  SizedBox(height: marginXsmall),
+                
                   Text(
                     (data.overview == null || data.overview!.isEmpty)
                         ? "Overview not available"
                         : data.overview!,
-                    maxLines: 3,
+                    maxLines: 2,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
@@ -75,7 +75,7 @@ class WidgetGridMovieItem extends StatelessWidget {
                         color: Colors.grey,
                         fontSize: 12),
                   ),
-                  SizedBox(height: marginXsmall),
+                  SizedBox(height: 5),
                   Text(
                     (data.releaseDate == null || data.releaseDate!.isEmpty)
                         ? "Release date not available"

@@ -85,62 +85,59 @@ class _MovieListScreenState extends State<MovieListScreen>
 
   Widget _listMovieTab() {
     return (!isInitialLoading)
-        ? Expanded(
-            child: NotificationListener<ScrollNotification>(
-              onNotification: (ScrollNotification scrollInfo) {
-                if (!isLoading &&
-                    scrollInfo.metrics.pixels ==
-                        scrollInfo.metrics.maxScrollExtent) {
-                  setState(() {
-                    if (currentPage != totalPage) {
-                      getMovieList(currentPage += 1);
-                      isLoading = true;
-                    }
-                  });
+        ? NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification scrollInfo) {
+            if (!isLoading &&
+                scrollInfo.metrics.pixels ==
+                    scrollInfo.metrics.maxScrollExtent) {
+              setState(() {
+                if (currentPage != totalPage) {
+                  getMovieList(currentPage += 1);
+                  isLoading = true;
                 }
-                return true;
-              },
-              child: ListView.builder(
-                itemCount: movieListItems.length,
-                itemBuilder: (context, index) {
-                  return WidgetListMovieItem(data: movieListItems[index]);
-                },
-              ),
-            ),
-          )
+              });
+            }
+            return true;
+          },
+          child: ListView.builder(
+            itemCount: movieListItems.length,
+            itemBuilder: (context, index) {
+              return WidgetListMovieItem(data: movieListItems[index]);
+            },
+          ),
+        )
         : Center(child: CircularProgressIndicator());
   }
 
   Widget _gridMovieTab() {
     return (!isInitialLoading)
-        ? Expanded(
-            child: NotificationListener<ScrollNotification>(
-              onNotification: (ScrollNotification scrollInfo) {
-                if (!isLoading &&
-                    scrollInfo.metrics.pixels ==
-                        scrollInfo.metrics.maxScrollExtent) {
-                  setState(() {
-                    if (currentPage != totalPage) {
-                      getMovieList(currentPage += 1);
-                      isLoading = true;
-                    }
-                  });
+        ? NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification scrollInfo) {
+            if (!isLoading &&
+                scrollInfo.metrics.pixels ==
+                    scrollInfo.metrics.maxScrollExtent) {
+              setState(() {
+                if (currentPage != totalPage) {
+                  getMovieList(currentPage += 1);
+                  isLoading = true;
                 }
-                return true;
-              },
-              child: GridView.builder(
-                itemCount: movieListItems.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: MediaQuery.of(context).size.width /
-                      (MediaQuery.of(context).size.height / 1.35),
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return WidgetGridMovieItem(data: movieListItems[index]);
-                },
-              ),
+              });
+            }
+            return true;
+          },
+          child: GridView.builder(
+            itemCount: movieListItems.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio:MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 1.3),
+                      
             ),
-          )
+            itemBuilder: (BuildContext context, int index) {
+              return WidgetGridMovieItem(data: movieListItems[index]);
+            },
+          ),
+        )
         : Center(child: CircularProgressIndicator());
   }
 }
